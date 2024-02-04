@@ -23,4 +23,5 @@ jobs:
         with:
           context: .
           tags: abhirambsn/bnb-auth:latest
+          platforms: linux/amd64,linux/arm64
           push: true
