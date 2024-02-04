@@ -26,7 +26,12 @@ app = FastAPI(
 app.include_router(AuthController)
 
 
+@app.get("/healthz")
+async def health_check():
+    api_response = APIResponse(status=HttpStatus.OK, data=None, message="ok")
+    return api_response.to_dict()
+
 @app.get("/")
 async def health_check():
-    api_response = APIResponse(code=HttpStatus.OK, data=None, message="ok")
+    api_response = APIResponse(status=HttpStatus.OK, data=None, message="ok")
     return api_response.to_dict()
