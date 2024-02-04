@@ -12,7 +12,7 @@ if os.getenv("ENV", "dev") == "dev":
 app = FastAPI(
     title="Bnb Clone Auth Service",
     description="This is the authentication service for the Bnb Clone Application",
-    version="0.1.0",
+    version="0.1.1",
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
