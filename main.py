@@ -1,9 +1,11 @@
 from fastapi import FastAPI
 from controller import AuthController
+from dtypes import APIResponse, HttpStatus
 import os
 
 if os.getenv("ENV", "dev") == "dev":
     from dotenv import load_dotenv
+
     load_dotenv()
     print("Development Environment\nLoading .env File")
 
@@ -23,11 +25,8 @@ app = FastAPI(
 
 app.include_router(AuthController)
 
+
 @app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+async def health_check():
+    api_response = APIResponse(code=HttpStatus.OK, data=None, message="ok")
+    return api_response.to_dict()
